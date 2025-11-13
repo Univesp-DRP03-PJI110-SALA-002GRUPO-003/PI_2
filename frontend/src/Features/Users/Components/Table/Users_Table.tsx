@@ -147,8 +147,8 @@ const Users_Table: React.FC<TableProps> = ({
 
               <div className="col-2 col-md-1">
                 <div className="avatar-container">
-                  {row.avatar ? (
-                    <img src={row.avatar} alt={row.first_name} />
+                  {row.avatar && row.avatar_mimmetype ? (
+                    <img src={`data:${row.avatar_mimmetype};base64,${row.avatar}`} alt={row.first_name} />
                   ) : (
                     <i className="icon-user no-user-icon" />
                   )}

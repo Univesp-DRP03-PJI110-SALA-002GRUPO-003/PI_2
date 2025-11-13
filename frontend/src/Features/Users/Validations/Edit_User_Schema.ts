@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const Edit_User_Schema = z.object({
 
-  id: z.number().optional(),
+  id: z.string().optional(),
 
   email: z.string({ required_error: "Email é obrigatório" })
     .email("Email inválido"),

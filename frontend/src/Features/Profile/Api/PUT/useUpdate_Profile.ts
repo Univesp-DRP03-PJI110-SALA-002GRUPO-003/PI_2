@@ -8,7 +8,6 @@ import type { IProfile } from "../../Types";
 
 
 type Variables = {
-  id_user: number;
   data: FormData;
 };
 
@@ -21,7 +20,7 @@ export const useUpdate_Profile = createMutation<
   Variables,
   AxiosError<Error>
 >({
-  mutationFn: async ({ id_user, data }) => {
+  mutationFn: async ({ data }) => {
 
     const response = await client.put<Response>(`https://wfrkrytdntmuwoejewbj.supabase.co/functions/v1/update-profile`, data, {
       headers: {
@@ -32,9 +31,11 @@ export const useUpdate_Profile = createMutation<
   }
 });
 
-export const convertProfileToFormData = (data: Profile_FormData) => {
+export const convertProfileToFormData = (id_user: string, data: Profile_FormData) => {
+  
   const formData = new FormData();
-
+  
+  formData.append("id_user", String(id_user));
   formData.append("first_name", String(data.first_name));
   formData.append("last_name", String(data.last_name));
   formData.append("email", String(data.email));

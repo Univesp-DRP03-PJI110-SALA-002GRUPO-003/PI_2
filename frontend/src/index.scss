@@ -45,6 +45,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+	overflow: auto;
+}
+
 .App {
 	display: flex;
 	flex-direction: column;

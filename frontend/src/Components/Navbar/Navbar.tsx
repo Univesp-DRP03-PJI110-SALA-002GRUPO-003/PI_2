@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Sidebar from '../Sidebar/Sidebar';
@@ -23,6 +23,8 @@ const Navbar: React.FC = () => {
   const { user, setUser } = useAuth();
   const { toast, setToast } = useToast();
 
+  const [avatarUrl, setAvatarUrl] = useState<string>('');
+
   const rawId = localStorage.getItem("Authenticated-User");
   const parsedId = rawId ?? undefined;
 
@@ -31,8 +33,13 @@ const Navbar: React.FC = () => {
     enabled: !!parsedId,
   });
 
-  useEffect(() => { profile && setUser(profile.data.user as IMe)}, [profile]);
+  useEffect(() => { profile && setUser(profile.data.user as IMe) }, [profile]);
 
+  useEffect(() => {
+    if (user && user.avatar && user.avatar_mimmetype) {
+      setAvatarUrl(`data:${user.avatar_mimmetype};base64,${user.avatar}`);
+    }
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('Authentication-Token');
@@ -88,7 +95,7 @@ const Navbar: React.FC = () => {
                 id={user.id!}
                 name={user.first_name}
                 email={user.email}
-                avatar={user.avatar ?? null}
+                avatar={avatarUrl ?? null}
                 onLogout={onLogout}
               />
             ) : (

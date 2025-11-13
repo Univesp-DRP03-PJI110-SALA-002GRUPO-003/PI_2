@@ -8,7 +8,7 @@ import type { IProfile } from "../../../Profile/Types";
 
 
 type Variables = {
-  id_user: number;
+  id_user: string;
   data: Partial<IUser>;
 };
 
@@ -23,7 +23,14 @@ export const useUpdate_User_ById = createMutation<
 >({
   mutationFn: async ({ id_user, data }) => {
 
-    const response = await client.put<Response>(`/users/update/${id_user}`, data);
+    const response = await client.put<Response>(`https://wfrkrytdntmuwoejewbj.supabase.co/functions/v1/update-user-byid/${id_user}`,
+      data, {
+      headers: {
+        "Content-Type": "application/json",
+        // apikey: import.meta.env.VITE_API_DB_KEY,
+      },
+    });
+
     return response.data;
   }
 });

@@ -55,7 +55,7 @@ const Users: React.FC = () => {
       last_name: EditUser_Form.getValues("last_name"),
     }
 
-    edit_user({ id_user: Number(userData.id), data: updatedData }, {
+    edit_user({ id_user: userData.id!, data: updatedData }, {
       onSuccess: async () => {
         setToast({
           message: "Usuário editado com sucesso",
@@ -79,7 +79,7 @@ const Users: React.FC = () => {
   }
 
   const onDelete = () => {
-    delete_user({ id_user: Number(userData.id) }, {
+    delete_user({ id_user: userData.id! }, {
 
       onSuccess: async () => {
         setToast({
@@ -141,10 +141,10 @@ const Users: React.FC = () => {
               setUserData(data);
               setShowDeleteModal(true);
             }}
-                    onPageChange={handlePageChange}
-        onRowsPerPageChange={handleRowsPerPageChange}
-        currentPage={paginationParams.page}
-        rowsPerPage={paginationParams.per_page}
+            onPageChange={handlePageChange}
+            onRowsPerPageChange={handleRowsPerPageChange}
+            currentPage={paginationParams.page}
+            rowsPerPage={paginationParams.per_page}
           />
         )
       )}

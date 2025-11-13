@@ -44,8 +44,7 @@ const Forgot: React.FC = () => {
           type: "success"
         });
 
-
-        navigate("/");
+        navigate("/login");
 
         return;
       },
@@ -63,22 +62,6 @@ const Forgot: React.FC = () => {
     <div id="login" className="container-xxl">
 
       <div className="row align-items-center justify-content-center h-100">
-
-        <div className="d-none d-md-block col-4 h-100">
-          <div className="headline-container">
-
-            <div className="headline">
-              <h4>Simplificamos</h4>
-              <h4>juntos</h4>
-            </div>
-
-            <div className="company-container">
-              <div className="company">
-                <span>Supply chain | Industrial | Systems</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div className="col-12 col-md-6 h-100">
           <div className='border-container'>
@@ -117,7 +100,7 @@ const Forgot: React.FC = () => {
                 <div className="col-12 col-sm-6 my-2 text-center text-sm-start">
                   <a
                     className="auth-text auth-link"
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/login")}
                   >
                     LOGIN
                   </a>

@@ -21,6 +21,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
     watch,
     formState: { errors },
   } = useFormContext();
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string>(defaultImage);
   const currentValue = watch(name);
@@ -29,6 +30,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
   useEffect(() => {
     if (typeof currentValue === 'string') {
       setPreview(currentValue);
+
     } else if (currentValue instanceof File) {
       const reader = new FileReader();
       reader.onloadend = () => {

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import logo from "../../../public/Logo.png";
+import logo from "../../../public/COVER.jpeg";
 
 import useToast from '../../Hooks/useToast';
 import { useLogin } from '../../Features/Auth/Api';
@@ -71,22 +71,6 @@ const Login: React.FC = () => {
     <div id="login" className="container-xxl">
 
       <div className="row align-items-center justify-content-center h-100">
-
-        <div className="d-none d-md-block col-4 h-100">
-          <div className="headline-container">
-
-            <div className="headline">
-              <h4>Simplificamos</h4>
-              <h4>juntos</h4>
-            </div>
-
-            <div className="company-container">
-              <div className="company">
-                <span>Supply chain | Industrial | Systems</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div className="col-12 col-md-6 h-100">
           <div className='border-container'>

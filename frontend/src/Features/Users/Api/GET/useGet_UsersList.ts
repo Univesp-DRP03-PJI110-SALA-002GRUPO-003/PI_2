@@ -23,7 +23,7 @@ export const useGet_UserList = createQuery<
   queryKey: ["user_list"],
   fetcher: async ({ page = 1, per_page = 5 }) => {
 
-    const response = await client.get<Response>("/users/list", {
+    const response = await client.get<Response>(`https://wfrkrytdntmuwoejewbj.supabase.co/functions/v1/get-users-list`, {
       params: {
         page: page,
         per_page: per_page

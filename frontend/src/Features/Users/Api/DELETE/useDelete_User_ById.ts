@@ -6,7 +6,7 @@ import type { ApiResponse } from "../../../../Types";
 
 
 type Variables = {
-  id_user: number;
+  id_user: string;
 };
 
 type Response = ApiResponse<{ message: string}>;
@@ -20,7 +20,7 @@ export const useDelete_User_ById = createMutation<
 >({
   mutationFn: async ({ id_user }) => {
 
-    const response = await client.delete<Response>(`/users/delete/${id_user}`)
+    const response = await client.post<Response>(`https://wfrkrytdntmuwoejewbj.supabase.co/functions/v1/delete-user-byId`, {id_user});
     return response.data;
   }
 });

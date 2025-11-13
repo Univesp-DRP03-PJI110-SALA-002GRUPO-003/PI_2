@@ -45,8 +45,16 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     if (profile?.data) {
+      const user = profile.data.user;
+
+      // Se o backend retornar base64 + mimetype, converte em dataURL
+      const avatarUrl =
+        user.avatar && user.avatar_mimmetype
+          ? `data:${user.avatar_mimmetype};base64,${user.avatar}`
+          : '';
+
       reset({
-        avatar: profile?.data.user.avatar ?? undefined,
+        avatar: avatarUrl,
         first_name: profile?.data.user.first_name,
         last_name: profile?.data.user.last_name,
         email: profile?.data.user.email,
@@ -56,10 +64,10 @@ const Profile: React.FC = () => {
 
   const onSubmit_Profile = (data: Profile_FormData) => {
 
-    const formData = convertProfileToFormData(data);
+    const formData = convertProfileToFormData(id!, data);
 
     update_profile(
-      { id_user: Number(id), data: formData }, {
+      { data: formData }, {
 
       onSuccess: async () => {
         setToast({
@@ -82,9 +90,9 @@ const Profile: React.FC = () => {
   };
 
   const onSubmit_Password = (data: Password_FormData) => {
-    
+
     update_password({
-      id_user: Number(id),
+      id_user: id!,
       data: {
         actual_password: (data.actual_password),
         new_password: (data.new_password),

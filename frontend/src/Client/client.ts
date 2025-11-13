@@ -4,8 +4,8 @@ import config from "./config";
 export const client = axios.create({
   baseURL: config.BASE_URL,
   headers: {
-    "Content-Type": "application/json",
-    "x-api-key": "reqres-free-v1"
+    // "Content-Type": "application/json",
+    // "x-api-key": "reqres-free-v1"
   },
 });
 
